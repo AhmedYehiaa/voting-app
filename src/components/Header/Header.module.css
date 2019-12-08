@@ -1,0 +1,20 @@
+.header {
+  z-index: 1;
+  width: 100%;
+  background: rgb(0, 206, 165);
+}
+
+.logo {
+  max-width: 90%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  font-family: "Solway", serif;
+}
+
+img {
+  max-height: 50px;
+}
+p {
+  font-weight: bold;
+}
