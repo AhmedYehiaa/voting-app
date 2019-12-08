@@ -1,11 +1,16 @@
 import React, { useState } from "react";
-
+import axios from "axios";
+import { withRouter } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
 import styles from "./NewQuestion.module.css";
+import Spinner from "../../components/Spinner";
 
-const NewQuestion = () => {
+import { API_BASE_URL } from "../../constants";
+
+const NewQuestion = ({ history }) => {
+  const [loading, setLoading] = useState(false);
   const [question, setQuestion] = useState("");
   const [choices, setChoices] = useState([]);
   const [newChoice, setNewChoice] = useState("");
@@ -17,14 +22,16 @@ const NewQuestion = () => {
     }
   };
 
-  const handleChange = event => {
-    const { name, value } = event.target;
+  const handleQuestionChange = event => {
     event.preventDefault();
-    if (name === "question") {
-      setQuestion(value);
-    } else if (name === "currentChoice") {
-      setNewChoice(value);
-    }
+    const { value } = event.target;
+    setQuestion(value);
+  };
+
+  const handleChoiceChange = event => {
+    event.preventDefault();
+    const { value } = event.target;
+    setNewChoice(value);
   };
 
   const handleDelete = index => {
@@ -33,73 +40,91 @@ const NewQuestion = () => {
     setChoices(filteredChoices);
   };
 
-  const handleSubmit = event => {
+  const handleSubmit = async event => {
     event.preventDefault();
-    console.log("Submitted Successfully");
-    console.log(question);
-    console.log(choices);
+    const body = {
+      question,
+      choices
+    };
+    try {
+      setLoading(true);
+      const result = await axios.post(`${API_BASE_URL}/questions`, body, {
+        headers: {
+          "Access-Control-Allow-Origin": "*"
+        }
+      });
+      setLoading(false);
+      history.replace("/");
+    } catch (error) {
+      setLoading(false);
+      history.replace("/not-found");
+    }
   };
 
-  return (
-    <div className={styles.newQuestionContainer}>
-      <form className={styles.newQuestionForm} onSubmit={handleSubmit}>
-        <div className={styles.questionInput}>
-          <label htmlFor="question">Question</label>
-          <div className={styles.inputGroup}>
-            <input
-              type="text"
-              id="question"
-              name="question"
-              value={question}
-              placeholder="Add new Question"
-              onChange={handleChange}
-            />
-            {/* error message here  */}
-          </div>
-        </div>
-        <div className={styles.choiceInput}>
-          <label htmlFor="currentChoice">Choices</label>
-          <div className={styles.inputGroup}>
-            <input
-              type="text"
-              id="currentChoice"
-              name="currentChoice"
-              value={newChoice}
-              placeholder="Add new Choice"
-              onChange={handleChange}
-              onKeyPress={e => e.key === "Enter" && addChoice()}
-            />
-            <button onClick={addChoice} className={styles.addChoiceBtn}>
-              Add choice <FontAwesomeIcon icon={faPlus} />
+  const rendeCondition = () => {
+    if (loading) return <Spinner />;
+    else {
+      return (
+        <div className={styles.newQuestionContainer}>
+          <div className={styles.newQuestionForm}>
+            <div className={styles.questionInput}>
+              <label htmlFor="question">Question</label>
+              <div className={styles.inputGroup}>
+                <input
+                  value={question}
+                  placeholder="Add new Question"
+                  onChange={handleQuestionChange}
+                />
+              </div>
+            </div>
+            <div className={styles.choiceInput}>
+              <label htmlFor="currentChoice">Choices</label>
+              <div className={styles.inputGroup}>
+                <input
+                  type="text"
+                  id="currentChoice"
+                  name="currentChoice"
+                  value={newChoice}
+                  placeholder="Add new Choice"
+                  onChange={handleChoiceChange}
+                />
+                <button onClick={addChoice} className={styles.addChoiceBtn}>
+                  Add choice <FontAwesomeIcon icon={faPlus} />
+                </button>
+              </div>
+            </div>
+            {choices.length > 0 ? (
+              <div className={styles.choicesListWrapper}>
+                <ul className={styles.choicesList}>
+                  {choices.map((choice, index) => (
+                    <li key={choice + index}>
+                      <p>
+                        {index + 1}. {"   "}
+                        {choice}
+                      </p>
+                      <FontAwesomeIcon
+                        title="remove"
+                        onClick={() => handleDelete(index)}
+                        icon={faTrashAlt}
+                      />
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
+            <button
+              disabled={!(question && choices.length >= 2)}
+              className={styles.submitButton}
+              onClick={handleSubmit}
+            >
+              Submit
             </button>
-            {/* error message here  */}
           </div>
         </div>
-        {choices.length > 0 ? (
-          <div className={styles.choicesListWrapper}>
-            <ul className={styles.choicesList}>
-              {choices.map((choice, index) => (
-                <li key={choice + index}>
-                  <p>
-                    {index + 1}. {"   "}
-                    {choice}
-                  </p>
-                  <FontAwesomeIcon
-                    title="remove"
-                    onClick={() => handleDelete(index)}
-                    icon={faTrashAlt}
-                  />
-                </li>
-              ))}
-            </ul>
-          </div>
-        ) : null}
-        <button disabled className={styles.submitButton} type="submit">
-          Submit
-        </button>
-      </form>
-    </div>
-  );
+      );
+    }
+  };
+  return rendeCondition();
 };
 
-export default NewQuestion;
+export default withRouter(NewQuestion);
