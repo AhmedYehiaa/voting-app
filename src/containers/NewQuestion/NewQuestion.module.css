@@ -1,0 +1,84 @@
+.newQuestionContainer {
+  width: 75%;
+  margin: auto;
+  padding: 50px;
+}
+
+.newQuestionForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #f3f3f3;
+}
+
+.newQuestionForm ul {
+  list-style: none;
+}
+
+.choiceInput {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  /* background: #ccc; */
+}
+.choicesListWrapper {
+  width: 50%;
+  margin-bottom: 10px;
+}
+
+.choicesListWrapper ul {
+  padding: 0;
+  margin: 0;
+}
+.choicesList {
+  width: 70%;
+}
+.choicesList li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.questionInput,
+.choiceInput {
+  width: 50%;
+  padding: 30px 0;
+}
+
+.questionInput input,
+.choiceInput input {
+  width: 80%;
+  padding: 10px;
+  border: none;
+}
+.inputGroup {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding-top: 10px;
+}
+.submitButton {
+  width: 50%;
+  padding: 10px;
+  margin: 10px auto;
+  border: none;
+  background: rgb(0, 41, 55);
+  color: #fff;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.submitButton:disabled,
+.submitButton[disabled] {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+.addChoiceBtn {
+  width: 110px;
+  border: none;
+  margin-left: 10px;
+  background: rgb(0, 41, 55);
+  color: #fff;
+  font-weight: bold;
+}
