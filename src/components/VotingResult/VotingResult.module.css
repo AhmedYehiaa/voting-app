@@ -1,0 +1,46 @@
+.votingResult {
+  border: 1px solid #ccc;
+  width: 75%;
+  margin: 50px auto;
+}
+
+.votingResult ul {
+  list-style: none;
+  padding: 0;
+}
+
+.votingResult li {
+  padding: 0 20px;
+}
+
+.votingResult .title {
+  margin: 0;
+  padding: 10px;
+  /* background: #002837; */
+  /* color: #fff; */
+}
+
+.votingResult .progressBar {
+  position: relative;
+  height: 40px;
+  line-height: 40px;
+  margin-bottom: 50px;
+  border-radius: 0;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  font-weight: 500;
+  border-radius: 0.6rem;
+  overflow: hidden;
+}
+
+.votingResult .filler {
+  background: rgb(0, 41, 55);
+  color: #fff;
+  height: 100%;
+  border-radius: 0.6rem 0 0 0.6rem;
+  transition: width 0.2s ease-in;
+}
+
+.votingResult .filler__percentage {
+  margin-left: 20px;
+}
