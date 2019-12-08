@@ -12,9 +12,9 @@
   font-family: "Solway", serif;
 }
 
-img {
+.header img {
   max-height: 50px;
 }
-p {
+.header p {
   font-weight: bold;
 }
