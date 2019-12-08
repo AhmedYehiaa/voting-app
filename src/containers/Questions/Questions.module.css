@@ -7,7 +7,7 @@
   background-color: rgb(0, 41, 55);
   color: #fff;
   height: 70px;
-  margin: 50px;
+  margin: 30px auto;
   text-align: center;
   line-height: 2;
 }
@@ -21,4 +21,23 @@
   align-items: stretch;
   width: 90%;
   margin: auto;
+}
+
+@media only screen and (max-width: 900px) {
+  .questionWrapper {
+    grid-template-columns: 1fr 1fr;
+  }
+  .questionWrapper {
+    width: 100%;
+  }
+  .title {
+    width: 100%;
+    margin: 20px auto;
+    font-size: 30px;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .questionWrapper {
+    grid-template-columns: 1fr;
+  }
 }

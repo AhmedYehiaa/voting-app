@@ -68,11 +68,18 @@
   text-transform: uppercase;
 }
 
+.submitButton:hover {
+  cursor: pointer;
+}
+
 .submitButton:disabled,
 .submitButton[disabled] {
   border: 1px solid #999999;
   background-color: #cccccc;
   color: #666666;
+}
+.submitButton[disabled]:hover {
+  cursor: not-allowed;
 }
 .addChoiceBtn {
   width: 110px;
@@ -81,4 +88,16 @@
   background: rgb(0, 41, 55);
   color: #fff;
   font-weight: bold;
+}
+
+@media only screen and (max-width: 900px) {
+  .questionInput,
+  .choiceInput {
+    width: 90%;
+  }
+  .newQuestionContainer {
+    width: 90%;
+    margin: auto;
+    padding: 20px 0;
+  }
 }

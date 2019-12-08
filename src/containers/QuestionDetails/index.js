@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-
 import axios from "axios";
 
 import { API_BASE_URL } from "../../constants";
 import VotingResult from "../../components/VotingResult";
 import Spinner from "../../components/Spinner";
-
 import styles from "./QuestionDetails.module.css";
 
 const QuestionDetails = ({ history, match }) => {
@@ -58,7 +56,7 @@ const QuestionDetails = ({ history, match }) => {
     } else {
       return (
         <div className={styles.questionDetails}>
-          <h1 className={styles.title}>{question.title}</h1>
+          <h2 className={styles.title}>{question.title}</h2>
           <ul>
             {question.choices.map(({ url, choice }) => (
               <li key={url} onChange={() => saveVote(url)}>

@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import styles from "./VotingResult.module.css";
 
 const VotingResult = ({ question }) => {
+  console.log(question);
   const getTotalVotes = choices => {
     return choices.reduce((sum, curr) => (sum += curr.votes), 0);
   };
@@ -12,7 +13,7 @@ const VotingResult = ({ question }) => {
 
   return (
     <div className={styles.votingResult}>
-      <h1 className={styles.title}>{question.title}</h1>
+      <h2 className={styles.title}>{question.title}</h2>
       <ul>
         {question.choices.map(({ choice, url, votes }) => (
           <li key={url}>
@@ -43,7 +44,13 @@ VotingResult.propTypes = {
   title: PropTypes.string,
   question: PropTypes.shape({
     title: PropTypes.string.isRequired,
-    choices: PropTypes.arrayOf(PropTypes.stirng)
+    choices: PropTypes.arrayOf(
+      PropTypes.shape({
+        choice: PropTypes.string.isRequired,
+        votes: PropTypes.number.isRequired,
+        url: PropTypes.string.isRequired
+      })
+    )
   }).isRequired
 };
 
