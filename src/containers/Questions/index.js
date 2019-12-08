@@ -4,6 +4,7 @@ import axios from "axios";
 import styles from "./Questions.module.css";
 import { API_BASE_URL } from "../../constants";
 import Question from "../../components/Question";
+import Spinner from "../../components/Spinner";
 
 const Questions = () => {
   const [loading, setLoading] = useState(false);
@@ -29,7 +30,7 @@ const Questions = () => {
     <div className={styles.container}>
       <h1 className={styles.title}>Check out some live polls</h1>
       {loading ? (
-        <p>Loading ...</p>
+        <Spinner />
       ) : (
         <div className={styles.questionWrapper}>
           {questions.map(question => (
