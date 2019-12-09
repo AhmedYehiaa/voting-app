@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NotFound Component matches snapshot 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="status"
+  >
+    <h1>
+      404
+    </h1>
+  </div>
+  <div
+    className="errorMessage"
+    data-testid="errorMessage"
+  >
+    <h2>
+      oops! this page could not be found
+    </h2>
+    <a
+      className="link"
+      data-testid="link"
+      href="/"
+      onClick={[Function]}
+    >
+      Return to Home Page
+    </a>
+  </div>
+</div>
+`;

@@ -11,9 +11,11 @@ const VotingResult = ({ question }) => {
   const totalVotes = getTotalVotes(question.choices);
 
   return (
-    <div className={styles.votingResult}>
-      <h2 className={styles.title}>{question.title}</h2>
-      <ul>
+    <div className={styles.votingResult} data-testid="votingResult">
+      <h2 className={styles.title} data-testid="title">
+        {question.title}
+      </h2>
+      <ul data-testid="choices">
         {question.choices.map(({ choice, url, votes }) => (
           <li key={url}>
             <p>

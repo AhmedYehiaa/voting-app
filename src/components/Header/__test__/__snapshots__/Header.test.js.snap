@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header Component matches snapshot 1`] = `
+<header
+  className="header"
+  data-testid="header"
+>
+  <div
+    className="logo"
+  >
+    <img
+      alt="logo"
+      data-testid="img"
+      src="vote.svg"
+    />
+    <p>
+      Create simple polls quickly and easily
+    </p>
+  </div>
+</header>
+`;

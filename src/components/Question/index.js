@@ -18,16 +18,18 @@ const Question = ({ title, url, publishedAt, choicesLength, history }) => {
   return (
     <div className={styles.container} onClick={() => history.push(url)}>
       <div className={styles.questionCard}>
-        <h3 className={styles.questionCardTitle}>{title}</h3>
+        <h3 className={styles.questionCardTitle} data-testid="title">
+          {title}
+        </h3>
         <div className={styles.questionCardBody}>
           <div>
             <FontAwesomeIcon icon={faCalendarDay} />
-            <p>{formateDate()}</p>
+            <p data-testid="publishedAt">{formateDate()}</p>
           </div>
           <div>
             <FontAwesomeIcon icon={faListOl} />
             <p>
-              <span>{choicesLength}</span>
+              <span data-testid="choicesLength">{choicesLength}</span>
               {"  "}choices
             </p>
           </div>

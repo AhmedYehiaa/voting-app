@@ -7,9 +7,14 @@ import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 
 const SubHeader = ({ title, buttonText, history }) => {
   return (
-    <div className={styles.subHeader}>
-      <h1 className={styles.title}>{title}</h1>
-      <button onClick={() => history.push("/questions/new")}>
+    <div className={styles.subHeader} data-testid="subHeader'">
+      <h1 className={styles.title} data-testid="title">
+        {title}
+      </h1>
+      <button
+        onClick={() => history.push("/questions/new")}
+        data-testid="button"
+      >
         {buttonText}
         {"   "}
         <FontAwesomeIcon icon={faPlusCircle} />

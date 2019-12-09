@@ -9,9 +9,9 @@ const NotFound = () => {
       <div className={styles.status}>
         <h1>404</h1>
       </div>
-      <div className={styles.errorMessage}>
+      <div className={styles.errorMessage} data-testid="errorMessage">
         <h2>oops! this page could not be found</h2>
-        <Link className={styles.link} to="/">
+        <Link className={styles.link} to="/" data-testid="link">
           Return to Home Page
         </Link>
       </div>

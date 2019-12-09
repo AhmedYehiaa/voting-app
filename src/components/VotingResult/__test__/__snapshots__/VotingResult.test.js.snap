@@ -1,0 +1,147 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Voting Result Component matches snapshot 1`] = `
+<div
+  className="votingResult"
+  data-testid="votingResult"
+>
+  <h2
+    className="title"
+    data-testid="title"
+  >
+    Favourite hot beverage?
+  </h2>
+  <ul
+    data-testid="choices"
+  >
+    <li>
+      <p>
+        Apple Cider
+         (
+        30
+         
+          
+        <span>
+          Votes
+        </span>
+        )
+      </p>
+      <div
+        className="progressBar"
+      >
+        <div
+          className="filler"
+          style={
+            Object {
+              "width": "30.612244897959183%",
+            }
+          }
+        >
+          <span
+            className="filler__percentage"
+          >
+            30.61
+            %
+          </span>
+        </div>
+      </div>
+    </li>
+    <li>
+      <p>
+        Tea
+         (
+        30
+         
+          
+        <span>
+          Votes
+        </span>
+        )
+      </p>
+      <div
+        className="progressBar"
+      >
+        <div
+          className="filler"
+          style={
+            Object {
+              "width": "30.612244897959183%",
+            }
+          }
+        >
+          <span
+            className="filler__percentage"
+          >
+            30.61
+            %
+          </span>
+        </div>
+      </div>
+    </li>
+    <li>
+      <p>
+        Hot Chocolate
+         (
+        21
+         
+          
+        <span>
+          Votes
+        </span>
+        )
+      </p>
+      <div
+        className="progressBar"
+      >
+        <div
+          className="filler"
+          style={
+            Object {
+              "width": "21.428571428571427%",
+            }
+          }
+        >
+          <span
+            className="filler__percentage"
+          >
+            21.43
+            %
+          </span>
+        </div>
+      </div>
+    </li>
+    <li>
+      <p>
+        Coffee
+         (
+        17
+         
+          
+        <span>
+          Votes
+        </span>
+        )
+      </p>
+      <div
+        className="progressBar"
+      >
+        <div
+          className="filler"
+          style={
+            Object {
+              "width": "17.346938775510203%",
+            }
+          }
+        >
+          <span
+            className="filler__percentage"
+          >
+            17.35
+            %
+          </span>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+`;
