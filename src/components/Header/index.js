@@ -4,9 +4,9 @@ import styles from "./Header.module.css";
 
 const Header = () => {
   return (
-    <header className={styles.header}>
+    <header className={styles.header} data-testid="header">
       <div className={styles.logo}>
-        <img src={logo} alt="logo" />
+        <img src={logo} alt="logo" data-testid="img" />
         <p>Create simple polls quickly and easily</p>
       </div>
     </header>
