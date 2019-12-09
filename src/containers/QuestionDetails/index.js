@@ -40,9 +40,9 @@ const QuestionDetails = ({ history, match }) => {
   const saveVote = async url => {
     try {
       setLoading(true);
-      const result = voteOnChoice(url);
+      const result = await voteOnChoice(url);
       const updateChoices = question.choices.map(choice => {
-        if (choice.choice === result.choice) {
+        if (choice.url === result.url) {
           choice.votes = result.votes;
         }
         return choice;

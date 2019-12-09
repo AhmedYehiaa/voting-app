@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import axios from "axios";
 import { withRouter } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
@@ -7,7 +6,7 @@ import { faPlus, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import styles from "./NewQuestion.module.css";
 import Spinner from "../../components/Spinner";
 
-import { API_BASE_URL } from "../../constants";
+import { addNewQuestion } from "../../services/APIcalls";
 
 const NewQuestion = ({ history }) => {
   const [loading, setLoading] = useState(false);
@@ -48,11 +47,7 @@ const NewQuestion = ({ history }) => {
     };
     try {
       setLoading(true);
-      const result = await axios.post(`${API_BASE_URL}/questions`, body, {
-        headers: {
-          "Access-Control-Allow-Origin": "*"
-        }
-      });
+      await addNewQuestion(body);
       setLoading(false);
       history.replace("/");
     } catch (error) {
@@ -124,6 +119,7 @@ const NewQuestion = ({ history }) => {
       );
     }
   };
+
   return rendeCondition();
 };
 

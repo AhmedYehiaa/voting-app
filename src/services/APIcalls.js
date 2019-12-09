@@ -27,3 +27,16 @@ export const voteOnChoice = async url => {
     return error;
   }
 };
+
+export const addNewQuestion = async body => {
+  try {
+    const result = await axios.post(`${API_BASE_URL}/questions`, body, {
+      headers: {
+        "Access-Control-Allow-Origin": "*"
+      }
+    });
+    return result.data;
+  } catch (error) {
+    return error;
+  }
+};
