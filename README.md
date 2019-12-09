@@ -21,7 +21,6 @@ This project was originally created to let users vote and create polls based on 
 ## Testing
 
 ```
-    To run the implemented tests:
     npm test
 ```
 
