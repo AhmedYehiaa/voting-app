@@ -3,34 +3,6 @@
   margin: auto;
 }
 
-.subHeader {
-  width: 90%;
-  display: flex;
-  justify-content: space-around;
-  height: 70px;
-  margin: 30px auto;
-  background-color: rgb(0, 41, 55);
-  color: #fff;
-  text-align: center;
-}
-.title {
-  flex: 10;
-  line-height: 0.7;
-}
-.subHeader button {
-  flex: 1;
-  border: none;
-  background: #00cea5;
-  font-weight: bold;
-  font-size: 15px;
-}
-
-.subHeader button:hover {
-  cursor: pointer;
-}
-.subHeader button:focus {
-  outline: none;
-}
 .questionWrapper {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -48,20 +20,6 @@
   }
   .questionWrapper {
     width: 100%;
-  }
-  .title {
-    width: 100%;
-    margin: 20px auto;
-    font-size: 30px;
-  }
-
-  .subHeader {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-  }
-  .title {
-    font-size: 15px;
   }
 }
 @media only screen and (max-width: 480px) {
