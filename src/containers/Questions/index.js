@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
+import { withRouter } from "react-router-dom";
 import axios from "axios";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 
 import styles from "./Questions.module.css";
 import { API_BASE_URL } from "../../constants";
 import Question from "../../components/Question";
 import Spinner from "../../components/Spinner";
 
-const Questions = () => {
+const Questions = ({ history }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [questions, setQuestions] = useState([]);
@@ -28,7 +31,16 @@ const Questions = () => {
   };
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>Check out some live polls</h1>
+      <div className={styles.subHeader}>
+        <h1 className={styles.title}>
+          Check out some live polls or add a new one
+        </h1>
+        <button onClick={() => history.push("/questions/new")}>
+          Add poll{"   "}
+          <FontAwesomeIcon icon={faPlusCircle} />
+        </button>
+      </div>
+
       {loading ? (
         <Spinner />
       ) : (
@@ -48,4 +60,4 @@ const Questions = () => {
   );
 };
 
-export default Questions;
+export default withRouter(Questions);
