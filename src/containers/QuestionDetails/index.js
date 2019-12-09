@@ -41,7 +41,17 @@ const QuestionDetails = ({ history, match }) => {
 
   const saveVote = async url => {
     try {
-      await axios.post(`${API_BASE_URL + url}`);
+      setLoading(true);
+      const result = await axios.post(`${API_BASE_URL + url}`);
+      const updateChoices = question.choices.map(choice => {
+        if (choice.choice === result.data.choice) {
+          choice.votes = result.data.votes;
+        }
+        return choice;
+      });
+      const updatedQuestion = { ...question };
+      updatedQuestion.choices = [...updateChoices];
+      setQuestion(updatedQuestion);
       setShowResult(true);
     } catch (error) {
       history.replace("not-found");
@@ -74,9 +84,7 @@ const QuestionDetails = ({ history, match }) => {
   };
 
   return (
-    <div>
-      {showResult ? <VotingResult question={question} /> : renderQuestion()}
-    </div>
+    <>{showResult ? <VotingResult question={question} /> : renderQuestion()}</>
   );
 };
 
