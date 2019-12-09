@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import axios from "axios";
 
-import { API_BASE_URL } from "../../constants";
 import VotingResult from "../../components/VotingResult";
 import Spinner from "../../components/Spinner";
 import styles from "./QuestionDetails.module.css";
+import { getQuestionById, voteOnChoice } from "../../services/APIcalls";
 
 const QuestionDetails = ({ history, match }) => {
   const [loading, setLoading] = useState(false);
@@ -25,12 +24,11 @@ const QuestionDetails = ({ history, match }) => {
   const getQuestion = async id => {
     try {
       setLoading(true);
-      const result = await axios.get(`${API_BASE_URL}/questions/${id}`);
-      const { data } = result;
+      const result = await getQuestionById(id);
       setQuestion({
-        title: data.question,
-        url: data.url,
-        choices: data.choices
+        title: result.question,
+        url: result.url,
+        choices: result.choices
       });
       setLoading(false);
     } catch (error) {
@@ -42,10 +40,10 @@ const QuestionDetails = ({ history, match }) => {
   const saveVote = async url => {
     try {
       setLoading(true);
-      const result = await axios.post(`${API_BASE_URL + url}`);
+      const result = voteOnChoice(url);
       const updateChoices = question.choices.map(choice => {
-        if (choice.choice === result.data.choice) {
-          choice.votes = result.data.votes;
+        if (choice.choice === result.choice) {
+          choice.votes = result.votes;
         }
         return choice;
       });

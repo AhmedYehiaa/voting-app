@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import styles from "./Questions.module.css";
 import Question from "../../components/Question";
 import Spinner from "../../components/Spinner";
-import { getQuestionsAPI } from "../../services/APIcalls";
+import { getQuestions as getQuestionsAPI } from "../../services/APIcalls";
 import SubHeader from "../../components/SubHeader";
 
 const Questions = () => {

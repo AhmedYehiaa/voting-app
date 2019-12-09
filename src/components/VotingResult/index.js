@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import styles from "./VotingResult.module.css";
 
 const VotingResult = ({ question }) => {
-  console.log(question);
   const getTotalVotes = choices => {
     return choices.reduce((sum, curr) => (sum += curr.votes), 0);
   };
