@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { withRouter } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 import styles from "./NewQuestion.module.css";
 import Spinner from "../../components/Spinner";
@@ -63,45 +63,52 @@ const NewQuestion = ({ history }) => {
         <div className={styles.newQuestionContainer}>
           <div className={styles.newQuestionForm}>
             <div className={styles.questionInput}>
-              <label htmlFor="question">Question</label>
               <div className={styles.inputGroup}>
                 <input
                   value={question}
-                  placeholder="Add new Question"
+                  className={styles.input}
+                  placeholder="Add question"
                   onChange={handleQuestionChange}
                 />
               </div>
             </div>
             <div className={styles.choiceInput}>
-              <label htmlFor="currentChoice">Choices</label>
               <div className={styles.inputGroup}>
                 <input
                   type="text"
                   id="currentChoice"
                   name="currentChoice"
+                  className={styles.input}
                   value={newChoice}
-                  placeholder="Add new Choice"
+                  placeholder="Add choice"
                   onChange={handleChoiceChange}
                 />
-                <button onClick={addChoice} className={styles.addChoiceBtn}>
+                <button
+                  onClick={addChoice}
+                  className={styles.addChoiceBtn}
+                  data-testid="addChoiceBtn"
+                >
                   Add choice <FontAwesomeIcon icon={faPlus} />
                 </button>
               </div>
             </div>
             {choices.length > 0 ? (
               <div className={styles.choicesListWrapper}>
-                <ul className={styles.choicesList}>
+                <ul className={styles.choicesList} data-testid="choicesList">
                   {choices.map((choice, index) => (
                     <li key={choice + index}>
-                      <p>
+                      <p data-testid="choice">
                         {index + 1}. {"   "}
                         {choice}
                       </p>
-                      <FontAwesomeIcon
+                      <button
+                        className={styles.removeBtn}
+                        data-testid={`removeChoiceBtn-${index + 1}`}
                         title="remove"
                         onClick={() => handleDelete(index)}
-                        icon={faTrashAlt}
-                      />
+                      >
+                        Remove
+                      </button>
                     </li>
                   ))}
                 </ul>
