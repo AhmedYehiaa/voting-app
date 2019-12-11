@@ -4,6 +4,10 @@
 
 This project was originally created to let users vote and create polls based on their prefrences.
 
+## Demo 🎉🎊
+
+https://voting-app-demo.netlify.com/
+
 ## Install
 
 ```
